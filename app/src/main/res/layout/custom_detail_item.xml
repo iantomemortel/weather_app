@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/pdpDetailItemContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/pdpDetailItemKey"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:textColor="#4A4A4A" />
+
+        <TextView
+            android:id="@+id/pdpDetailItemValue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:textColor="#4A4A4A" />
+
+        <ImageView
+            android:id="@+id/pdpDetailItemIndicator"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_expand_more_white_24px"
+            android:tint="#cacaca"
+            android:visibility="gone" />
+    </LinearLayout>
+</LinearLayout>

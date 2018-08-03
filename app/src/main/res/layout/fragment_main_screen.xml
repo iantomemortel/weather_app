@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="isLoading"
+            type="boolean" />
+
+        <variable
+            name="callback"
+            type="com.example.ian.weatherapp.Home.RefreshButtonClickCallback" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="30dp"
+                android:background="#E5E5E5"
+                android:choiceMode="singleChoice"
+                android:dividerHeight="5dp"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                app:visibleGone="@{!isLoading}" />
+
+            <Button
+                android:id="@+id/btnRefresh"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/ic_refresh_black_24dp"
+                android:gravity="center"
+                android:onClick="@{(v) -> callback.onButtonRefreshClick()}"
+                app:visibleGone="@{!isLoading}" />
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progreessBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            app:visibleGone="@{isLoading}" />
+
+
+    </RelativeLayout>
+</layout>

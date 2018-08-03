@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.example.ian.weatherapp.debug"
+      android:versionCode="3333"
+      android:versionName="3.3"
+      split="lib_slice_9_apk">
+</manifest>

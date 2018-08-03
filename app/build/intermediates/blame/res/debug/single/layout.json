@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "C:\\Users\\SwoopDev2\\IAN\\ian_files\\weather_app\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_main_screen.xml",
+        "source": "C:\\Users\\SwoopDev2\\IAN\\ian_files\\weather_app\\app\\src\\main\\res\\layout\\fragment_main_screen.xml"
+    },
+    {
+        "merged": "C:\\Users\\SwoopDev2\\IAN\\ian_files\\weather_app\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_list_item.xml",
+        "source": "C:\\Users\\SwoopDev2\\IAN\\ian_files\\weather_app\\app\\src\\main\\res\\layout\\item_list_item.xml"
+    }
+]
