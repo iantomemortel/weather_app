@@ -68,7 +68,7 @@ public class MainScreenFragment extends android.support.v4.app.Fragment {
 
         HomeFragmentComponent homeFragmentComponent = DaggerHomeFragmentComponent.builder()
                 .homeFragmentModule(new HomeFragmentModule(this))
-                .weatherApplicationComponent(WeatherApplication.get(getActivity()).weatherApplicationComponent())
+                .weatherApplicationComponent(WeatherApplication.get(requireActivity()).weatherApplicationComponent())
                 .build();
 
         homeFragmentComponent.inject(this);
