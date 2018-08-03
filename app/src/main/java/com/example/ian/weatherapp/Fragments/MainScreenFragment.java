@@ -82,7 +82,7 @@ public class MainScreenFragment extends android.support.v4.app.Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(LocationListViewModel.class);
+        viewModel = ViewModelProviders.of(requireActivity(), viewModelFactory).get(LocationListViewModel.class);
 
         viewModel.liveDataListLocation.observe(this, new Observer<ArrayList<Location>>() {
             @Override
