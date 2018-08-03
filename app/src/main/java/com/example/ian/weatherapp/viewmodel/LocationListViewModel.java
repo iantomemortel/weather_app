@@ -11,6 +11,7 @@ import com.example.ian.weatherapp.Model.Location;
 import com.example.ian.weatherapp.network.WeatherService;
 import com.google.gson.Gson;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.inject.Inject;
@@ -24,12 +25,14 @@ public class LocationListViewModel extends ViewModel {
     private WeatherService weatherService;
     private Gson gson;
     public MutableLiveData<ArrayList<Location>> liveDataListLocation;
+    public MutableLiveData<String> returnMessage;
 
     LocationListViewModel(WeatherService weatherService, Gson gson) {
         this.weatherService = weatherService;
         this.gson = gson;
         if (liveDataListLocation == null) {
             liveDataListLocation = new MutableLiveData<>();
+            returnMessage = new MutableLiveData<>();
             loadLocationList();
         }
     }
@@ -48,24 +51,25 @@ public class LocationListViewModel extends ViewModel {
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
-                try {
-                    if (response != null) {
-                        Log.d("onResponse", "Response came from server");
 
+                if (response.isSuccessful()) {
+                    try {
                         Lists list = gson.fromJson(response.body().string(), Lists.class);
-
+                        returnMessage.postValue("Loaded successfully!");
                         liveDataListLocation.postValue(list.getList());
+                    } catch (Exception e) {
+                        returnMessage.postValue("Nothing found!");
                     }
-
-                } catch (Exception e) {
-                    Log.d("onResponse", "There is an error");
-                    e.printStackTrace();
+                } else {
+                    returnMessage.postValue(response.errorBody().toString());
                 }
+
 
             }
 
             @Override
             public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable throwable) {
+                returnMessage.postValue("No internet connection!");
             }
         });
 

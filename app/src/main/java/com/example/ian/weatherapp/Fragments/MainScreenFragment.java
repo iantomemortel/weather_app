@@ -11,6 +11,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.ian.weatherapp.Activities.WeatherDetailActivity;
 import com.example.ian.weatherapp.Adapters.ItemAdapter;
@@ -93,6 +94,14 @@ public class MainScreenFragment extends android.support.v4.app.Fragment {
                     fragmentMainScreenBinding.setIsLoading(true);
                 }
                 fragmentMainScreenBinding.executePendingBindings();
+            }
+        });
+
+        viewModel.returnMessage.observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) {
+                fragmentMainScreenBinding.setIsLoading(false);
+                Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
             }
         });
 
