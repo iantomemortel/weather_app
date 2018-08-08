@@ -20,6 +20,7 @@ import com.example.ian.weatherapp.Home.ItemClickCallback;
 import com.example.ian.weatherapp.Model.Location;
 import com.example.ian.weatherapp.R;
 import com.example.ian.weatherapp.databinding.ItemListItemBinding;
+import com.example.ian.weatherapp.entity.Item;
 
 import java.util.ArrayList;
 
@@ -27,7 +28,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
-    private ArrayList<Location> items = new ArrayList<>();
+    private ArrayList<Item> items = new ArrayList<>();
     private Context context;
     private ItemClickCallback itemClickCallback;
 
@@ -36,7 +37,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         this.itemClickCallback = itemClickCallback;
     }
 
-    public void setItems(ArrayList<Location> items) {
+    public void setItems(ArrayList<Item> items) {
         this.items = items;
         notifyDataSetChanged();
     }
@@ -51,9 +52,11 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-        String link = "http://openweathermap.org/img/w/" + items.get(position).getWeather().get(0).getIcon() + ".png";
-        Glide.with(context).load(link).into(holder.itemListItemBinding.iconWeather);
+//        String link = "http://openweathermap.org/img/w/" + items.get(position).getWeather().get(0).getIcon() + ".png";
+//        Glide.with(context).load(link).into(holder.itemListItemBinding.iconWeather);
         holder.itemListItemBinding.setItem(items.get(position));
+
+
     }
 
     @Override

@@ -5,7 +5,7 @@
 
         <variable
             name="item"
-            type="com.example.ian.weatherapp.Model.Location" />
+            type="com.example.ian.weatherapp.entity.Item" />
 
         <variable
             name="callback"
@@ -71,8 +71,8 @@
                     <TextView
                         android:id="@+id/act_weather"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@{item.weather.get(0).main}" />
+                        android:layout_height="wrap_content"/>
+                        <!--android:text="@{item.weather.get(0).main}" />-->
 
                 </LinearLayout>
 

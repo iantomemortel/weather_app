@@ -1,6 +1,9 @@
 package com.example.ian.weatherapp;
 
+import android.app.Activity;
+import android.app.Application;
 import android.arch.lifecycle.ViewModelProvider;
+import android.content.Context;
 
 import com.example.ian.weatherapp.network.WeatherService;
 import com.example.ian.weatherapp.viewmodel.LocationListViewModel;
@@ -11,8 +14,9 @@ import dagger.Provides;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 
-@Module(includes = NetworkModule.class)
+@Module(includes = {NetworkModule.class})
 public class WeatherAppServiceModule {
+    Application application;
     @WeatherApplicationScope
     @Provides
     public WeatherService weatherService(Retrofit weatherRetrofit) {
@@ -34,9 +38,10 @@ public class WeatherAppServiceModule {
         return new Gson();
     }
 
-    @WeatherApplicationScope
-    @Provides
-    public ViewModelProvider.Factory factory(WeatherService weatherService, Gson gson) {
-        return new LocationListViewModel.Factory(weatherService, gson);
-    }
+
+//    @WeatherApplicationScope
+//    @Provides
+//    public ViewModelProvider.Factory factory(WeatherService weatherService, Gson gson) {
+//        return new LocationListViewModel.Factory(weatherService, gson);
+//    }
 }

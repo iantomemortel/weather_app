@@ -5,12 +5,9 @@ import com.example.ian.weatherapp.Fragments.MainScreenFragment;
 import com.example.ian.weatherapp.Fragments.MainScreenFragment_MembersInjector;
 import com.example.ian.weatherapp.WeatherApplicationComponent;
 import com.example.ian.weatherapp.network.WeatherService;
-import com.example.ian.weatherapp.viewmodel.LocationListViewModel;
-import com.example.ian.weatherapp.viewmodel.LocationListViewModel_Factory_Factory;
 import com.google.gson.Gson;
 import dagger.MembersInjector;
 import dagger.internal.Factory;
-import dagger.internal.MembersInjectors;
 import dagger.internal.Preconditions;
 import javax.inject.Provider;
 
@@ -18,8 +15,6 @@ public final class DaggerHomeFragmentComponent implements HomeFragmentComponent 
   private Provider<WeatherService> getWeatherServiceProvider;
 
   private Provider<Gson> getGsonProvider;
-
-  private Provider<LocationListViewModel.Factory> factoryProvider;
 
   private MembersInjector<MainScreenFragment> mainScreenFragmentMembersInjector;
 
@@ -61,14 +56,8 @@ public final class DaggerHomeFragmentComponent implements HomeFragmentComponent 
           }
         };
 
-    this.factoryProvider =
-        LocationListViewModel_Factory_Factory.create(
-            MembersInjectors.<LocationListViewModel.Factory>noOp(),
-            getWeatherServiceProvider,
-            getGsonProvider);
-
     this.mainScreenFragmentMembersInjector =
-        MainScreenFragment_MembersInjector.create(factoryProvider);
+        MainScreenFragment_MembersInjector.create(getWeatherServiceProvider, getGsonProvider);
   }
 
   @Override

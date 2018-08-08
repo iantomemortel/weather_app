@@ -24,7 +24,10 @@ import com.example.ian.weatherapp.Model.Location;
 import com.example.ian.weatherapp.R;
 import com.example.ian.weatherapp.WeatherApplication;
 import com.example.ian.weatherapp.databinding.FragmentMainScreenBinding;
+import com.example.ian.weatherapp.entity.Item;
+import com.example.ian.weatherapp.network.WeatherService;
 import com.example.ian.weatherapp.viewmodel.LocationListViewModel;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -39,8 +42,13 @@ public class MainScreenFragment extends android.support.v4.app.Fragment {
 
     LocationListViewModel viewModel;
 
+//    @Inject
+////    LocationListViewModel.Factory viewModelFactory;
+
     @Inject
-    LocationListViewModel.Factory viewModelFactory;
+    WeatherService weatherService;
+    @Inject
+    Gson gson;
 
 
     public MainScreenFragment() {
@@ -82,11 +90,14 @@ public class MainScreenFragment extends android.support.v4.app.Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        LocationListViewModel.Factory viewModelFactory =  new LocationListViewModel.Factory(
+                getActivity().getApplication(), weatherService, gson
+        );
         viewModel = ViewModelProviders.of(requireActivity(), viewModelFactory).get(LocationListViewModel.class);
 
-        viewModel.liveDataListLocation.observe(this, new Observer<ArrayList<Location>>() {
+        viewModel.liveDataListLocation.observe(this, new Observer<ArrayList<Item>>() {
             @Override
-            public void onChanged(@Nullable ArrayList<Location> locations) {
+            public void onChanged(@Nullable ArrayList<Item> locations) {
                 if (locations != null) {
                     fragmentMainScreenBinding.setIsLoading(false);
                     itemAdapter.setItems(locations);
@@ -110,7 +121,7 @@ public class MainScreenFragment extends android.support.v4.app.Fragment {
 
     private final ItemClickCallback itemClickCallback = new ItemClickCallback() {
         @Override
-        public void onClick(Location location) {
+        public void onClick(Item location) {
             if (getLifecycle().getCurrentState().isAtLeast(Lifecycle.State.STARTED)) {
                 Intent intent = new Intent();
                 Bundle bundle = new Bundle();

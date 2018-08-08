@@ -14,7 +14,8 @@ public class ItemListItemBinding extends android.databinding.ViewDataBinding imp
     static {
         sIncludes = null;
         sViewsWithIds = new android.util.SparseIntArray();
-        sViewsWithIds.put(R.id.iconWeather, 4);
+        sViewsWithIds.put(R.id.iconWeather, 3);
+        sViewsWithIds.put(R.id.act_weather, 4);
     }
     // views
     @NonNull
@@ -29,7 +30,7 @@ public class ItemListItemBinding extends android.databinding.ViewDataBinding imp
     public final android.widget.TextView temp;
     // variables
     @Nullable
-    private com.example.ian.weatherapp.Model.Location mItem;
+    private com.example.ian.weatherapp.entity.Item mItem;
     @Nullable
     private com.example.ian.weatherapp.Home.ItemClickCallback mCallback;
     @Nullable
@@ -41,14 +42,13 @@ public class ItemListItemBinding extends android.databinding.ViewDataBinding imp
     public ItemListItemBinding(@NonNull android.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
         super(bindingComponent, root, 0);
         final Object[] bindings = mapBindings(bindingComponent, root, 5, sIncludes, sViewsWithIds);
-        this.actWeather = (android.widget.TextView) bindings[2];
-        this.actWeather.setTag(null);
-        this.iconWeather = (android.widget.ImageView) bindings[4];
+        this.actWeather = (android.widget.TextView) bindings[4];
+        this.iconWeather = (android.widget.ImageView) bindings[3];
         this.location = (android.widget.TextView) bindings[1];
         this.location.setTag(null);
         this.mboundView0 = (android.support.constraint.ConstraintLayout) bindings[0];
         this.mboundView0.setTag(null);
-        this.temp = (android.widget.TextView) bindings[3];
+        this.temp = (android.widget.TextView) bindings[2];
         this.temp.setTag(null);
         setRootTag(root);
         // listeners
@@ -78,7 +78,7 @@ public class ItemListItemBinding extends android.databinding.ViewDataBinding imp
     public boolean setVariable(int variableId, @Nullable Object variable)  {
         boolean variableSet = true;
         if (BR.item == variableId) {
-            setItem((com.example.ian.weatherapp.Model.Location) variable);
+            setItem((com.example.ian.weatherapp.entity.Item) variable);
         }
         else if (BR.callback == variableId) {
             setCallback((com.example.ian.weatherapp.Home.ItemClickCallback) variable);
@@ -89,7 +89,7 @@ public class ItemListItemBinding extends android.databinding.ViewDataBinding imp
             return variableSet;
     }
 
-    public void setItem(@Nullable com.example.ian.weatherapp.Model.Location Item) {
+    public void setItem(@Nullable com.example.ian.weatherapp.entity.Item Item) {
         this.mItem = Item;
         synchronized(this) {
             mDirtyFlags |= 0x1L;
@@ -98,7 +98,7 @@ public class ItemListItemBinding extends android.databinding.ViewDataBinding imp
         super.requestRebind();
     }
     @Nullable
-    public com.example.ian.weatherapp.Model.Location getItem() {
+    public com.example.ian.weatherapp.entity.Item getItem() {
         return mItem;
     }
     public void setCallback(@Nullable com.example.ian.weatherapp.Home.ItemClickCallback Callback) {
@@ -128,22 +128,17 @@ public class ItemListItemBinding extends android.databinding.ViewDataBinding imp
             dirtyFlags = mDirtyFlags;
             mDirtyFlags = 0;
         }
-        com.example.ian.weatherapp.Model.Location item = mItem;
+        com.example.ian.weatherapp.entity.Item item = mItem;
         com.example.ian.weatherapp.Home.ItemClickCallback callback = mCallback;
-        java.lang.String itemWeatherGetInt0Main = null;
         java.lang.String itemMainTemp = null;
-        java.util.ArrayList<com.example.ian.weatherapp.Model.Weather> itemWeather = null;
-        com.example.ian.weatherapp.Model.Weather itemWeatherGetInt0 = null;
         java.lang.String itemName = null;
-        com.example.ian.weatherapp.Model.Main itemMain = null;
+        com.example.ian.weatherapp.entity.Main itemMain = null;
 
         if ((dirtyFlags & 0x5L) != 0) {
 
 
 
                 if (item != null) {
-                    // read item.weather
-                    itemWeather = item.getWeather();
                     // read item.name
                     itemName = item.getName();
                     // read item.main
@@ -151,26 +146,15 @@ public class ItemListItemBinding extends android.databinding.ViewDataBinding imp
                 }
 
 
-                if (itemWeather != null) {
-                    // read item.weather.get(0)
-                    itemWeatherGetInt0 = itemWeather.get(0);
-                }
                 if (itemMain != null) {
                     // read item.main.temp
-                    itemMainTemp = itemMain.getTemp();
-                }
-
-
-                if (itemWeatherGetInt0 != null) {
-                    // read item.weather.get(0).main
-                    itemWeatherGetInt0Main = itemWeatherGetInt0.getMain();
+                    itemMainTemp = itemMain.temp;
                 }
         }
         // batch finished
         if ((dirtyFlags & 0x5L) != 0) {
             // api target 1
 
-            android.databinding.adapters.TextViewBindingAdapter.setText(this.actWeather, itemWeatherGetInt0Main);
             android.databinding.adapters.TextViewBindingAdapter.setText(this.location, itemName);
             android.databinding.adapters.TextViewBindingAdapter.setText(this.temp, itemMainTemp);
         }
@@ -185,7 +169,7 @@ public class ItemListItemBinding extends android.databinding.ViewDataBinding imp
     public final void _internalCallbackOnClick(int sourceId , android.view.View callbackArg_0) {
         // localize variables for thread safety
         // item
-        com.example.ian.weatherapp.Model.Location item = mItem;
+        com.example.ian.weatherapp.entity.Item item = mItem;
         // callback
         com.example.ian.weatherapp.Home.ItemClickCallback callback = mCallback;
         // callback != null
