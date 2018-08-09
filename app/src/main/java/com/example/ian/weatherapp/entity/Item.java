@@ -3,12 +3,17 @@ package com.example.ian.weatherapp.entity;
 import android.arch.persistence.room.Embedded;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.arch.persistence.room.TypeConverters;
 import android.support.annotation.NonNull;
 
+import com.example.ian.weatherapp.data.WeatherTypeConverters;
+
 import java.io.Serializable;
+import java.util.List;
 
 
 @Entity
+@TypeConverters({WeatherTypeConverters.class})
 public class Item implements Serializable {
     @PrimaryKey
     @NonNull
@@ -29,6 +34,9 @@ public class Item implements Serializable {
     public System sys;
     @Embedded
     public Wind wind;
+    @TypeConverters(WeatherTypeConverters.class)
+    public List<Weather> weather;
+
 
     public Item() {
     }
@@ -124,12 +132,14 @@ public class Item implements Serializable {
         this.wind = wind;
     }
 
+    public List<Weather> getWeather() {
+        return weather;
+    }
 
+    public void setWeather(List<Weather> weather) {
+        this.weather = weather;
+    }
 
-
-
-
-//    public String weather; // will receive json string
 
 
 }

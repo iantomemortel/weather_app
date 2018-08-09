@@ -6,6 +6,8 @@ import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.content.Context;
+import android.os.Build;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.Toast;
@@ -18,10 +20,22 @@ import com.example.ian.weatherapp.entity.Item;
 import com.example.ian.weatherapp.entity.LocalLists;
 import com.example.ian.weatherapp.network.WeatherService;
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
+
+import org.json.JSONObject;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.channels.FileChannel;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -59,15 +73,15 @@ public class LocationListViewModel extends AndroidViewModel {
 
     private void loadLocationList() {
         liveDataListLocation.setValue(null);
+        loadItemsFromServer();
 
-
-        if (!AppDatabase.getAppDatabase(application.getApplicationContext()).locationDao().loadItems().isEmpty()) {
-            List<Item> localList;
-            localList = AppDatabase.getAppDatabase(application.getApplicationContext()).locationDao().loadItems();
-            loadItemsFromLocalDb(localList);
-        } else {
-            loadItemsFromServer();
-        }
+//        if (!AppDatabase.getAppDatabase(application.getApplicationContext()).locationDao().loadItems().isEmpty()) {
+//            List<Item> localList;
+//            localList = AppDatabase.getAppDatabase(application.getApplicationContext()).locationDao().loadItems();
+//            loadItemsFromLocalDb(localList);
+//        } else {
+//            loadItemsFromServer();
+//        }
 
 
     }
@@ -109,11 +123,12 @@ public class LocationListViewModel extends AndroidViewModel {
 
                 if (response.isSuccessful()) {
                     try {
-                        LocalLists localLists = gson.fromJson(response.body().string(), LocalLists.class);
+                        String valueJson = response.body().string();
+                        LocalLists localLists = gson.fromJson(valueJson, LocalLists.class);
                         returnMessage.postValue("Loaded successfully!");
                         liveDataListLocation.postValue(localLists.getList());
-
                         updateLocalDb(localLists.getList());
+//                        writeToSD(); //save the db locally for testing purposes
 
                     } catch (Exception e) {
                         returnMessage.postValue("Nothing found!");
@@ -135,6 +150,27 @@ public class LocationListViewModel extends AndroidViewModel {
     private void loadItemsFromLocalDb(List<Item> localList) {
         returnMessage.postValue("Loaded from the local database!");
         liveDataListLocation.postValue((ArrayList<Item>) localList);
+    }
+
+    private void writeToSD() throws IOException {
+        File sd = new File(Environment.getExternalStorageDirectory().getAbsoluteFile(), "Back-up DB");
+        String DB_PATH;
+
+        DB_PATH = application.getFilesDir().getAbsolutePath().replace("files", "databases") + File.separator;
+
+        if (sd.canWrite()) {
+            String currentDBPath = "weather.db";
+            String backupDBPath = "backupweather.db";
+            File currentDB = new File(DB_PATH, currentDBPath);
+            File backupDB = new File(sd, backupDBPath);
+
+            FileChannel src = new FileInputStream(currentDB).getChannel();
+            FileChannel dst = new FileOutputStream(backupDB).getChannel();
+            dst.transferFrom(src, 0, src.size());
+            src.close();
+            dst.close();
+
+        }
     }
 
 

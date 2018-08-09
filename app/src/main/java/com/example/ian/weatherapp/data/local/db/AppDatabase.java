@@ -17,7 +17,7 @@ public abstract class AppDatabase extends RoomDatabase {
         if(appDatabase==null)
         {
 
-            appDatabase = Room.inMemoryDatabaseBuilder(context, AppDatabase.class).allowMainThreadQueries().build();
+            appDatabase = Room.databaseBuilder(context, AppDatabase.class, "weather").allowMainThreadQueries().build();
         }
         return appDatabase;
     }

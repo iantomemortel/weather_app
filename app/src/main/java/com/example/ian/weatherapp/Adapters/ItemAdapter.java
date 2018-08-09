@@ -52,8 +52,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-//        String link = "http://openweathermap.org/img/w/" + items.get(position).getWeather().get(0).getIcon() + ".png";
-//        Glide.with(context).load(link).into(holder.itemListItemBinding.iconWeather);
+        String link = "http://openweathermap.org/img/w/" + items.get(position).getWeather().get(0).icon + ".png";
+        Glide.with(context).load(link).into(holder.itemListItemBinding.iconWeather);
         holder.itemListItemBinding.setItem(items.get(position));
 
 

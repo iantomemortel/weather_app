@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:2:1-27:12
-INJECTED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:2:1-27:12
-INJECTED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:2:1-27:12
-INJECTED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:2:1-27:12
+ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:2:1-28:12
 MERGED from [com.android.databinding:adapters:3.1.2] C:\Users\SwoopDev2\.gradle\caches\transforms-1\files-1.1\adapters-3.1.2.aar\d49392713e625207a7e15058bfc73018\AndroidManifest.xml:17:1-24:12
 MERGED from [com.android.databinding:library:3.1.2] C:\Users\SwoopDev2\.gradle\caches\transforms-1\files-1.1\library-3.1.2.aar\2ed6999b78fc643bca0d621f4e0d7f44\AndroidManifest.xml:17:1-24:12
 MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\SwoopDev2\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\88da58a8cb3e66375557b287bf34e76e\AndroidManifest.xml:17:1-22:12
@@ -27,20 +27,20 @@ MERGED from [android.arch.core:runtime:1.1.1] C:\Users\SwoopDev2\.gradle\caches\
 MERGED from [android.arch.persistence:db-framework:1.0.0] C:\Users\SwoopDev2\.gradle\caches\transforms-1\files-1.1\db-framework-1.0.0.aar\cca8b3cf7250202750bfbe653d1d7e17\AndroidManifest.xml:17:1-24:12
 MERGED from [android.arch.persistence:db:1.0.0] C:\Users\SwoopDev2\.gradle\caches\transforms-1\files-1.1\db-1.0.0.aar\ef5558a34b91532cb1078048b20e9b90\AndroidManifest.xml:17:1-24:12
 MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\SwoopDev2\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\91a88fe6885fdb207fdcdb684d3ef59d\AndroidManifest.xml:17:1-22:12
-INJECTED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:2:1-27:12
-INJECTED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:2:1-27:12
-INJECTED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:2:1-28:12
 	package
 		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:3:5-41
 		INJECTED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:2:1-27:12
+		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:2:1-28:12
 		INJECTED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:2:1-27:12
+		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:2:1-28:12
 		INJECTED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:2:11-69
@@ -52,48 +52,52 @@ uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:6:5-79
 	android:name
 		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:6:22-76
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:7:5-81
+	android:name
+		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:7:22-78
 application
-ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:8:5-25:19
+ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:9:5-26:19
 MERGED from [com.android.support.constraint:constraint-layout:1.1.0] C:\Users\SwoopDev2\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.0.aar\ffbd078f33f6df648890e870ade34bb3\AndroidManifest.xml:9:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.1.0] C:\Users\SwoopDev2\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.0.aar\ffbd078f33f6df648890e870ade34bb3\AndroidManifest.xml:9:5-20
 MERGED from [android.arch.lifecycle:extensions:1.1.1] C:\Users\SwoopDev2\.gradle\caches\transforms-1\files-1.1\extensions-1.1.1.aar\f8282e00e7d268d033ea77e9c433b818\AndroidManifest.xml:22:5-28:19
 MERGED from [android.arch.lifecycle:extensions:1.1.1] C:\Users\SwoopDev2\.gradle\caches\transforms-1\files-1.1\extensions-1.1.1.aar\f8282e00e7d268d033ea77e9c433b818\AndroidManifest.xml:22:5-28:19
 	android:supportsRtl
-		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:14:9-35
+		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:15:9-35
 	android:label
-		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:12:9-36
+		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:13:9-36
 	android:roundIcon
-		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:13:9-54
+		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:14:9-54
 	android:icon
-		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:11:9-38
+		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:12:9-38
 	android:allowBackup
-		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:10:9-35
+		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:11:9-35
 	android:theme
-		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:15:9-40
+		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:16:9-40
 	android:name
-		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:9:9-43
+		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:10:9-43
 activity#com.example.ian.weatherapp.Activities.SplashScreenActivity
-ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:16:9-21:20
+ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:17:9-22:20
 	android:name
-		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:16:19-66
+		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:17:19-66
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:17:13-20:29
+ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:18:13-21:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:18:17-69
+ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:19:17-69
 	android:name
-		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:18:25-66
+		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:19:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:19:17-77
+ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:20:17-77
 	android:name
-		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:19:27-74
+		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:20:27-74
 activity#com.example.ian.weatherapp.Activities.MainActivity
-ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:22:9-61
+ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:23:9-61
 	android:name
-		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:22:19-58
+		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:23:19-58
 activity#com.example.ian.weatherapp.Activities.WeatherDetailActivity
-ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:23:9-70
+ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:24:9-70
 	android:name
-		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:23:19-67
+		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:24:19-67
 uses-sdk
 INJECTED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml
