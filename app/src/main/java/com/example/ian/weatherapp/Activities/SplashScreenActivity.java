@@ -15,29 +15,31 @@ import butterknife.ButterKnife;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
-    @BindView(R.id.splashScreen)
-    RelativeLayout splashScreen;
+//    @BindView(R.id.splashScreen)
+//    RelativeLayout splashScreen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash_screen);
-        ButterKnife.bind(this);
+//        setContentView(R.layout.activity_splash_screen);
+//        ButterKnife.bind(this);
+//
+//        if (BuildConfig.FLAVOR.equalsIgnoreCase("dev")) {
+//            splashScreen.setBackgroundColor(Color.GRAY);
+//        }
+//        else {
+//            splashScreen.setBackgroundColor(Color.WHITE);
+//        }
 
-        if (BuildConfig.FLAVOR.equalsIgnoreCase("dev")) {
-            splashScreen.setBackgroundColor(Color.GRAY);
-        }
-        else {
-            splashScreen.setBackgroundColor(Color.WHITE);
-        }
+        startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
 
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
-                finish();
-            }
-        }, 2000);
+//        final Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
+//                finish();
+//            }
+//        }, 2000);
     }
 }

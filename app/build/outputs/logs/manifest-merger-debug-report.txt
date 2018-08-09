@@ -79,7 +79,7 @@ MERGED from [com.github.bumptech.glide:gifdecoder:4.7.1] C:\Users\SwoopDev2\.gra
 	android:allowBackup
 		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:11:9-35
 	android:theme
-		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:16:9-40
+		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:16:9-49
 	android:name
 		ADDED from C:\Users\SwoopDev2\IAN\ian_files\weather_app\app\src\main\AndroidManifest.xml:10:9-43
 activity#com.example.ian.weatherapp.Activities.SplashScreenActivity
