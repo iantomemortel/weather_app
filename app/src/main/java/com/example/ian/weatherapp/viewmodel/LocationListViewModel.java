@@ -13,6 +13,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.ian.weatherapp.ApplicationContext;
+import com.example.ian.weatherapp.BuildConfig;
 import com.example.ian.weatherapp.Model.Lists;
 import com.example.ian.weatherapp.Model.Location;
 import com.example.ian.weatherapp.data.local.db.AppDatabase;
@@ -67,7 +68,7 @@ public class LocationListViewModel extends AndroidViewModel {
     }
 
     public void refresh() {
-        loadLocationList();
+        loadItemsFromServer();
     }
 
 
@@ -112,7 +113,8 @@ public class LocationListViewModel extends AndroidViewModel {
     }
 
     private void loadItemsFromServer() {
-        String url = "http://api.openweathermap.org/data/2.5/group?id=4517009,4548393,5391959&units=metric&APPID=5bea56b1d8227d22befcfa6582bc9b7c";
+        String openWeatherApiKey = BuildConfig.openWeatherApiKey;
+        String url = "http://api.openweathermap.org/data/2.5/group?id=4517009,4548393,5391959&units=metric&APPID="+openWeatherApiKey;
 
         Call<ResponseBody> call = weatherService.downloadFile(url);
 
@@ -124,7 +126,7 @@ public class LocationListViewModel extends AndroidViewModel {
                     try {
                         String valueJson = response.body().string();
                         LocalLists localLists = gson.fromJson(valueJson, LocalLists.class);
-                        returnMessage.postValue("Loaded successfully!");
+                        returnMessage.postValue("Successfully loaded from server!");
                         liveDataListLocation.postValue(localLists.getList());
                         updateLocalDb(localLists.getList());
 //                        writeToSD(); //save the db locally for testing purposes

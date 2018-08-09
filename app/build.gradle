@@ -32,6 +32,8 @@ android {
             debuggable true
         }
         debug {
+            buildConfigField 'String', "openWeatherApiKey", open_weather_api_key
+            resValue 'string', "openWeatherApiKey", open_weather_api_key
             applicationIdSuffix ".debug"
         }
     }

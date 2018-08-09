@@ -1810,7 +1810,7 @@ public final class R {
      * <tr><td>barrier</td><td>2</td><td></td></tr>
      * <tr><td>chains</td><td>4</td><td></td></tr>
      * <tr><td>dimensions</td><td>8</td><td></td></tr>
-     * <tr><td>direct</td><td>1</td><td>for now only direct & barriers</td></tr>
+     * <tr><td>direct</td><td>1</td><td></td></tr>
      * <tr><td>none</td><td>0</td><td></td></tr>
      * <tr><td>standard</td><td>3</td><td></td></tr>
      * </table>
@@ -3344,8 +3344,9 @@ public final class R {
     public static final int abc_shareactionprovider_share_with=0x7f0b001a;
     public static final int abc_shareactionprovider_share_with_application=0x7f0b001b;
     public static final int abc_toolbar_collapse_description=0x7f0b001c;
-    public static final int search_menu_title=0x7f0b001d;
-    public static final int status_bar_notification_info_overflow=0x7f0b001e;
+    public static final int openWeatherApiKey=0x7f0b001d;
+    public static final int search_menu_title=0x7f0b001e;
+    public static final int status_bar_notification_info_overflow=0x7f0b001f;
   }
   public static final class style {
     public static final int AlertDialog_AppCompat=0x7f0c0000;
@@ -8006,7 +8007,7 @@ public final class R {
      * <tr><td>barrier</td><td>2</td><td></td></tr>
      * <tr><td>chains</td><td>4</td><td></td></tr>
      * <tr><td>dimensions</td><td>8</td><td></td></tr>
-     * <tr><td>direct</td><td>1</td><td>for now only direct & barriers</td></tr>
+     * <tr><td>direct</td><td>1</td><td></td></tr>
      * <tr><td>none</td><td>0</td><td></td></tr>
      * <tr><td>standard</td><td>3</td><td></td></tr>
      * </table>
