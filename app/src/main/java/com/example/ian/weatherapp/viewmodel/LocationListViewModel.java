@@ -73,15 +73,14 @@ public class LocationListViewModel extends AndroidViewModel {
 
     private void loadLocationList() {
         liveDataListLocation.setValue(null);
-        loadItemsFromServer();
 
-//        if (!AppDatabase.getAppDatabase(application.getApplicationContext()).locationDao().loadItems().isEmpty()) {
-//            List<Item> localList;
-//            localList = AppDatabase.getAppDatabase(application.getApplicationContext()).locationDao().loadItems();
-//            loadItemsFromLocalDb(localList);
-//        } else {
-//            loadItemsFromServer();
-//        }
+        if (!AppDatabase.getAppDatabase(application.getApplicationContext()).locationDao().loadItems().isEmpty()) {
+            List<Item> localList;
+            localList = AppDatabase.getAppDatabase(application.getApplicationContext()).locationDao().loadItems();
+            loadItemsFromLocalDb(localList);
+        } else {
+            loadItemsFromServer();
+        }
 
 
     }
