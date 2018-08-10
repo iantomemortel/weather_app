@@ -90,7 +90,7 @@ public class MainScreenFragment extends android.support.v4.app.Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        LocationListViewModel.Factory viewModelFactory =  new LocationListViewModel.Factory(
+        LocationListViewModel.Factory viewModelFactory = new LocationListViewModel.Factory(
                 getActivity().getApplication(), weatherService, gson
         );
         viewModel = ViewModelProviders.of(requireActivity(), viewModelFactory).get(LocationListViewModel.class);
@@ -121,14 +121,10 @@ public class MainScreenFragment extends android.support.v4.app.Fragment {
 
     private final ItemClickCallback itemClickCallback = new ItemClickCallback() {
         @Override
-        public void onClick(Item location) {
+        public void onClick(String id) {
             if (getLifecycle().getCurrentState().isAtLeast(Lifecycle.State.STARTED)) {
-                Intent intent = new Intent();
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("location", location);
-                intent.putExtras(bundle);
-                intent.setClass(Objects.requireNonNull(getContext()), WeatherDetailActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(getContext(), WeatherDetailActivity.class)
+                        .putExtra("id", id));
             }
         }
     };

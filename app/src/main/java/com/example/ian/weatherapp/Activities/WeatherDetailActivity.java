@@ -20,15 +20,18 @@ import com.example.ian.weatherapp.R;
 import com.example.ian.weatherapp.Util.CustomExpandableListView;
 import com.example.ian.weatherapp.Util.NetworkConnectivityChecker;
 import com.example.ian.weatherapp.WeatherApplication;
+import com.example.ian.weatherapp.data.local.db.AppDatabase;
 import com.example.ian.weatherapp.detailPage.DaggerDetailActivityComponent;
 import com.example.ian.weatherapp.detailPage.DetailActivityComponent;
 import com.example.ian.weatherapp.detailPage.DetailActivityModule;
+import com.example.ian.weatherapp.entity.Item;
 import com.example.ian.weatherapp.network.WeatherService;
 import com.google.gson.Gson;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -65,8 +68,7 @@ public class WeatherDetailActivity extends AppCompatActivity {
     @Inject
     Gson gson;
 
-
-    public static Location location;
+    public static Item location;
 
     private ArrayList<Details> listDataHeader;
     private Map<Details, ArrayList<Details>> listDataChild;
@@ -75,6 +77,7 @@ public class WeatherDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather_detail);
         ButterKnife.bind(this);
@@ -86,16 +89,14 @@ public class WeatherDetailActivity extends AppCompatActivity {
 
         component.injectDetailActivity(this);
 
-        Bundle b = this.getIntent().getExtras();
-        if (b != null) {
-            location = (Location) b.getSerializable("location");
-        }
+        location = AppDatabase.getAppDatabase(this).locationDao().getItem(getIntent().getExtras().getString("id"));
+
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle("Weather Details");
 
-        name.setText("Weather Details for " + location.getName());
+        name.setText("Weather Details for " + location.name);
 
         prepareData();
         updateUI();
@@ -105,23 +106,23 @@ public class WeatherDetailActivity extends AppCompatActivity {
     }
 
     private void prepareData() {
-        String sunrise = new SimpleDateFormat("EEE, d MMM yyyy hh:mm aaa").format(location.getSys().getSunrise());
-        String sunset = new SimpleDateFormat("EEE, d MMM yyyy hh:mm aaa").format(location.getSys().getSunset());
-        String link = "http://openweathermap.org/img/w/" + location.getWeather().get(0).getIcon() + ".png";
+//        String sunrise = new SimpleDateFormat("EEE, d MMM yyyy hh:mm aaa").format(location.getSys().sunrise);
+//        String sunset = new SimpleDateFormat("EEE, d MMM yyyy hh:mm aaa").format(location.getSys().sunset);
+        String link = "http://openweathermap.org/img/w/" + location.getWeather().get(0).icon + ".png";
         Glide.with(this).load(link).into(iconWeather);
         listDataHeader = new ArrayList<Details>();
         listDataChild = new HashMap<Details, ArrayList<Details>>();
 
-        Details detail0 = new Details("Clouds", location.getClouds().getAll() + " %");
-        Details detail1 = new Details("Actual Weather", location.getWeather().get(0).getMain());
-        Details detail2 = new Details("Weather Description", location.getWeather().get(0).getDescription());
-        Details detail3 = new Details("Temperature", location.getMain().getTemp() + " °C");
-        Details detail4 = new Details("Pressure", location.getMain().getPressure() + " hpa");
-        Details detail5 = new Details("Humidity", location.getMain().getHumidity());
-        Details detail6 = new Details("Minimum Temperature", location.getMain().getTemp_min() + " °C");
-        Details detail7 = new Details("Maximum Temperature", location.getMain().getTemp_max() + " °C");
-        Details detail8 = new Details("Wind Speed", location.getWind().getSpeed() + " m/s");
-        Details detail9 = new Details("Wind Deg", location.getWind().getDeg());
+        Details detail0 = new Details("Clouds", location.getClouds().all + " %");
+        Details detail1 = new Details("Actual Weather", location.getWeather().get(0).main);
+        Details detail2 = new Details("Weather Description", location.getWeather().get(0).description);
+        Details detail3 = new Details("Temperature", location.getMain().temp + " °C");
+        Details detail4 = new Details("Pressure", location.getMain().pressure + " hpa");
+        Details detail5 = new Details("Humidity", location.getMain().humidity);
+        Details detail6 = new Details("Minimum Temperature", location.getMain().temp_min + " °C");
+        Details detail7 = new Details("Maximum Temperature", location.getMain().temp_max + " °C");
+        Details detail8 = new Details("Wind Speed", location.getWind().speed + " m/s");
+        Details detail9 = new Details("Wind Deg", location.getWind().deg);
 //        Details details10 = new Details("Sunrise", sunrise);
 //        Details details11 = new Details("Sunset", sunset);
         Details detail12 = new Details("Visibility", location.getVisibility());
@@ -183,8 +184,8 @@ public class WeatherDetailActivity extends AppCompatActivity {
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                     try {
                         if (response != null) {
-                            Location location = null;
-                            location = gson.fromJson(response.body().string(), Location.class);
+                            Item location = null;
+                            location = gson.fromJson(response.body().string(), Item.class);
                             WeatherDetailActivity.location = location;
 
                             progreessBarParentLayout.setVisibility(View.GONE);

@@ -21,6 +21,9 @@ public interface LocationDao {
     @Query("select * from Item")
     List<Item> loadItems();
 
+    @Query("select * from Item where id = :id")
+    Item getItem(String id);
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Item item);
 

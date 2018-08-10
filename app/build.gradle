@@ -8,10 +8,10 @@ android {
 
     signingConfigs {
         config {
-            keyAlias 'iantomemortel'
-            keyPassword '123456'
-            storeFile file('/home/ian/apps/swoop_key.jks')
-            storePassword '123456'
+            keyAlias key_alias
+            keyPassword key_password
+            storeFile file('C:\\Users\\SwoopDev2\\IAN\\ian_files\\weather_app\\weather_app_key.jks')
+            storePassword store_password
         }
     }
 
@@ -28,6 +28,8 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField 'String', "openWeatherApiKey", open_weather_api_key
+            resValue 'string', "openWeatherApiKey", open_weather_api_key
             signingConfig signingConfigs.config
             debuggable true
         }
@@ -74,4 +76,10 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+    //library for leakCanary
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.1'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.1'
+    // Optional, if you use support library fragments:
+    debugImplementation 'com.squareup.leakcanary:leakcanary-support-fragment:1.6.1'
 }

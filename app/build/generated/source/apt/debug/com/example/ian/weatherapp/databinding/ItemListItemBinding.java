@@ -184,8 +184,12 @@ public class ItemListItemBinding extends android.databinding.ViewDataBinding imp
     // callback impls
     public final void _internalCallbackOnClick(int sourceId , android.view.View callbackArg_0) {
         // localize variables for thread safety
+        // item.id
+        java.lang.String itemId = null;
         // item
         com.example.ian.weatherapp.entity.Item item = mItem;
+        // item != null
+        boolean itemJavaLangObjectNull = false;
         // callback
         com.example.ian.weatherapp.Home.ItemClickCallback callback = mCallback;
         // callback != null
@@ -198,7 +202,14 @@ public class ItemListItemBinding extends android.databinding.ViewDataBinding imp
 
 
 
-            callback.onClick(item);
+            itemJavaLangObjectNull = (item) != (null);
+            if (itemJavaLangObjectNull) {
+
+
+                itemId = item.getId();
+
+                callback.onClick(itemId);
+            }
         }
     }
     // dirty flag
