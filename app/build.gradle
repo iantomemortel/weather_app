@@ -6,14 +6,14 @@ android {
         enabled = true
     }
 
-    signingConfigs {
-        config {
-            keyAlias key_alias
-            keyPassword key_password
-            storeFile file('C:\\Users\\SwoopDev2\\IAN\\ian_files\\weather_app\\weather_app_key.jks')
-            storePassword store_password
-        }
-    }
+//    signingConfigs {
+//        config {
+//            keyAlias key_alias
+//            keyPassword key_password
+//            storeFile file('C:\\Users\\SwoopDev2\\IAN\\ian_files\\weather_app\\weather_app_key.jks')
+//            storePassword store_password
+//        }
+//    }
 
     compileSdkVersion 27
     defaultConfig {
@@ -23,6 +23,12 @@ android {
         versionCode 3333
         versionName "3.3"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
     }
     buildTypes {
         release {
@@ -30,7 +36,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField 'String', "openWeatherApiKey", open_weather_api_key
             resValue 'string', "openWeatherApiKey", open_weather_api_key
-            signingConfig signingConfigs.config
+//            signingConfig signingConfigs.config
             debuggable true
         }
         debug {
