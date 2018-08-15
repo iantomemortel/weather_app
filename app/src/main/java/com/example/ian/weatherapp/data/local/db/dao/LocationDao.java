@@ -1,5 +1,6 @@
 package com.example.ian.weatherapp.data.local.db.dao;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
@@ -19,16 +20,16 @@ import java.util.List;
 public interface LocationDao {
 
     @Query("select * from Item")
-    List<Item> loadItems();
+    LiveData<List<Item>> loadItems();
 
     @Query("select * from Item where id = :id")
-    Item getItem(String id);
+    LiveData<Item> getItem(String id);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Item item);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    List<Long> insert(ArrayList<Item> locations);
+    List<Long> insert(List<Item>locations);
 
     @Update
     void updateItems(ArrayList<Item> locations);

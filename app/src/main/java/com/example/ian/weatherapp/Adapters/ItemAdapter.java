@@ -1,4 +1,4 @@
-package com.example.ian.weatherapp.Adapters;
+package com.example.ian.weatherapp.adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -23,12 +23,13 @@ import com.example.ian.weatherapp.databinding.ItemListItemBinding;
 import com.example.ian.weatherapp.entity.Item;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
-    private ArrayList<Item> items = new ArrayList<>();
+    private List<Item> items = new ArrayList<>();
     private Context context;
     private ItemClickCallback itemClickCallback;
 
@@ -37,7 +38,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         this.itemClickCallback = itemClickCallback;
     }
 
-    public void setItems(ArrayList<Item> items) {
+    public void setItems(List<Item> items) {
         this.items = items;
         notifyDataSetChanged();
     }

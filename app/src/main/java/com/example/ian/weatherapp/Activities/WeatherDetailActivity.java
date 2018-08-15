@@ -26,6 +26,7 @@ import com.example.ian.weatherapp.detailPage.DetailActivityComponent;
 import com.example.ian.weatherapp.detailPage.DetailActivityModule;
 import com.example.ian.weatherapp.entity.Item;
 import com.example.ian.weatherapp.network.WeatherService;
+import com.example.ian.weatherapp.thread.DefaultExecutorSupplier;
 import com.google.gson.Gson;
 
 import java.text.SimpleDateFormat;
@@ -33,6 +34,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Future;
 
 import javax.inject.Inject;
 
@@ -89,7 +91,13 @@ public class WeatherDetailActivity extends AppCompatActivity {
 
         component.injectDetailActivity(this);
 
-        location = AppDatabase.getAppDatabase(this).locationDao().getItem(getIntent().getExtras().getString("id"));
+        DefaultExecutorSupplier.getInstance().forBackgroundTasks().execute(new Runnable() {
+            @Override
+            public void run() {
+//                location = AppDatabase.getAppDatabase(getApplicationContext()).locationDao().getItem(getIntent().getExtras().getString("id"));
+            }
+        });
+
 
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

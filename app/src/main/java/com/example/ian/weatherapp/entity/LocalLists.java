@@ -1,17 +1,20 @@
 package com.example.ian.weatherapp.entity;
 
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MutableLiveData;
+
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
 
 public class LocalLists implements Serializable {
-    private ArrayList<Item> list;
+    private List<Item> list;
     public LocalLists() {
     }
-    public ArrayList<Item> getList() {
+    public List<Item> getList() {
         return list;
     }
 
-    public void setList(ArrayList<Item> list) {
+    public void setList(List<Item> list) {
         this.list = list;
     }
 

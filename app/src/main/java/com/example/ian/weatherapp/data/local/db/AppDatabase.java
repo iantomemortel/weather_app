@@ -11,15 +11,18 @@ import com.example.ian.weatherapp.entity.Item;
 @Database(entities = Item.class, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase appDatabase;
+
     public abstract LocationDao locationDao();
 
-    public static AppDatabase getAppDatabase(Context context){
-        if(appDatabase==null)
-        {
-
-            appDatabase = Room.databaseBuilder(context, AppDatabase.class, "weather").allowMainThreadQueries().build();
+    public static AppDatabase getAppDatabase(Context context) {
+        if (appDatabase == null) {
+            appDatabase = buildDatabase(context);
         }
         return appDatabase;
+    }
+
+    private static AppDatabase buildDatabase(Context context) {
+        return Room.databaseBuilder(context, AppDatabase.class, "weather").build();
     }
 
 }

@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.ian.weatherapp.Activities.WeatherDetailActivity;
-import com.example.ian.weatherapp.Adapters.ItemAdapter;
 import com.example.ian.weatherapp.Home.DaggerHomeFragmentComponent;
 import com.example.ian.weatherapp.Home.HomeFragmentComponent;
 import com.example.ian.weatherapp.Home.HomeFragmentModule;
@@ -23,6 +22,7 @@ import com.example.ian.weatherapp.Home.RefreshButtonClickCallback;
 import com.example.ian.weatherapp.Model.Location;
 import com.example.ian.weatherapp.R;
 import com.example.ian.weatherapp.WeatherApplication;
+import com.example.ian.weatherapp.adapters.ItemAdapter;
 import com.example.ian.weatherapp.databinding.FragmentMainScreenBinding;
 import com.example.ian.weatherapp.entity.Item;
 import com.example.ian.weatherapp.network.WeatherService;
@@ -30,6 +30,7 @@ import com.example.ian.weatherapp.viewmodel.LocationListViewModel;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.inject.Inject;
@@ -94,27 +95,43 @@ public class MainScreenFragment extends android.support.v4.app.Fragment {
                 getActivity().getApplication(), weatherService, gson
         );
         viewModel = ViewModelProviders.of(requireActivity(), viewModelFactory).get(LocationListViewModel.class);
-
-        viewModel.liveDataListLocation.observe(this, new Observer<ArrayList<Item>>() {
+        viewModel.getLiveDataListLocation().observe(this, new Observer<List<Item>>() {
             @Override
-            public void onChanged(@Nullable ArrayList<Item> locations) {
-                if (locations != null) {
+            public void onChanged(@Nullable List<Item> list) {
+
+                if (list != null) {
                     fragmentMainScreenBinding.setIsLoading(false);
-                    itemAdapter.setItems(locations);
+                    itemAdapter.setItems(list);
                 } else {
                     fragmentMainScreenBinding.setIsLoading(true);
                 }
                 fragmentMainScreenBinding.executePendingBindings();
+
             }
         });
 
-        viewModel.returnMessage.observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                fragmentMainScreenBinding.setIsLoading(false);
-                Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
-            }
-        });
+//        viewModel
+//
+//        viewModel.liveDataListLocation.observe(this, new Observer<List<Item>>() {
+//            @Override
+//            public void onChanged(@Nullable ArrayList<Item> locations) {
+//                if (locations != null) {
+//                    fragmentMainScreenBinding.setIsLoading(false);
+//                    itemAdapter.setItems(locations);
+//                } else {
+//                    fragmentMainScreenBinding.setIsLoading(true);
+//                }
+//                fragmentMainScreenBinding.executePendingBindings();
+//            }
+//        });
+
+//        viewModel.returnMessage.observe(this, new Observer<String>() {
+//            @Override
+//            public void onChanged(@Nullable String s) {
+//                fragmentMainScreenBinding.setIsLoading(false);
+//                Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
 
     }
